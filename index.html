@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yekiddd's Happy Planet</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background: linear-gradient(135deg, #FDF6F9 0%, #FFEEF4 100%);
+    color: #333;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.header-float {
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0.8;
+    z-index: 0;
+    pointer-events: none;
+}
+.float-1 { top: 20px; left: 30px; animation: floatAnim 6s ease-in-out infinite; }
+.float-2 { top: 20px; right: 30px; animation: floatAnim 6.5s ease-in-out infinite 1s; }
+.float-3 { bottom: 30px; left: 30px; animation: floatAnim 5.5s ease-in-out infinite 1.5s; }
+.float-4 { bottom: 30px; right: 30px; animation: floatAnim 6s ease-in-out infinite 2s; }
+
+@keyframes floatAnim {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    50%   { transform: translate(0, -12px) rotate(5deg); }
+    100%  { transform: translate(0, 0) rotate(0deg); }
+}
+
+.floating-star {
+    position: fixed;
+    font-size: 1.6rem;
+    color: #FF85A2;
+    z-index: -1;
+    animation: float 3.5s ease-in-out infinite;
+    pointer-events: none;
+}
+.star1 { top: 12%; left: 5%; animation-delay: 0s; }
+.star2 { top: 30%; right: 8%; animation-delay: 0.7s; }
+.star3 { top: 55%; left: 12%; animation-delay: 1.2s; }
+.star4 { top: 78%; right: 15%; animation-delay: 1.8s; }
+.star5 { top: 25%; left: 85%; animation-delay: 2.3s; }
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+@keyframes shake {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,133,162,0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(255,133,162,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,133,162,0); }
+}
+
+header {
+    background: linear-gradient(135deg, #E8FBFF 0%, #D6F4FF 100%);
+    padding: 3.5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid #FF85A2;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 8px 20px rgba(255,133,162,0.15);
+}
+.header-nav {
+    position: absolute;
+    top: 1.5rem; right: 2rem;
+}
+.header-nav a {
+    color: #FF597B;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.7);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+.header-nav a:hover {
+    color: #FF3F6F;
+    transform: translateY(-2px);
+    background: rgba(255,255,255,1);
+    box-shadow: 0 4px 10px rgba(255,133,162,0.2);
+}
+.header-title {
+    position: relative;
+    z-index: 2;
+    margin-top: 2rem;
+    animation: fadeInDown 1s ease;
+}
+.header-title h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 0.8rem;
+    color: #FF597B;
+    animation: bounce 2s ease infinite;
+}
+.header-title p {
+    font-size: 1.4rem;
+    color: #666;
+    font-weight: 600;
+    animation: fadeIn 1.5s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 3px solid #FF85A2;
+    display: inline-block;
+    color: #FF597B;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.profile p {
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 1.15rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 180, 190, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+.profile p:hover {
+    transform: translateX(6px) scale(1.02);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(255,133,162,0.15);
+}
+
+.info-grid > div {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #E0F2F1;
+    transition: all 0.3s ease;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+.info-grid > div:hover {
+    background: rgba(255,255,255,0.4);
+    padding-left: 8px;
+    transform: scale(1.02);
+}
+
+.about-me {
+    margin-bottom: 4rem;
+}
+.blog-header {
+    width: 100%;
+    background: url(15.jpg) no-repeat center center;
+    background-size: cover;
+    border-radius: 30px;
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.blog-header:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+.blog-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.1);
+    border-radius: 30px;
+}
+.blog-banner {
+    position: relative;
+    z-index: 1;
+}
+.avatar-wrapper {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 1.5rem;
+    border: 6px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: rotate 8s linear infinite;
+}
+.blog-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.blog-name {
+    font-size: 2.4rem;
+    color: white;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 0.5rem;
+}
+.blog-subtitle {
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+}
+.profile {
+    background: linear-gradient(135deg, #FFF5F8 0%, #FFEEF4 100%);
+    padding: 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease;
+    border: none;
+}
+
+.info-with-photos {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    align-items: stretch;
+}
+.basic-info {
+    flex: 0.7;
+    background: linear-gradient(135deg, #F0FBFF 0%, #E0F5FF 100%);
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease 0.2s both;
+    border: none;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+}
+.info-grid .label {
+    font-weight: 700;
+    color: #FF597B;
+    font-size: 1.05rem;
+}
+
+.photo-show-box {
+    flex: 0.3;
+    background: linear-gradient(135deg, #FFF0F7 0%, #FFE1EE 100%);
+    border-radius: 30px;
+    padding: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease 0.3s both;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    overflow: hidden;
+}
+.photo-show-item {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.photo-show-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    display: block;
+}
+.photo-show-item:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.photo-show-item:hover img {
+    transform: scale(1.15);
+}
+
+.interests {
+    margin-bottom: 3rem;
+}
+.interest-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.interest-card {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s both;
+    border: none;
+}
+.interest-card:nth-child(1) {
+    background: linear-gradient(135deg, #FCE4EC 0%, #F8BBD0 100%);
+}
+.interest-card:nth-child(2) {
+    background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+}
+.interest-card:nth-child(3) {
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+}
+.interest-card:nth-child(4) {
+    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+}
+.interest-card:hover {
+    transform: translateY(-6px) rotate(1deg);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+.interest-card h3 {
+    padding: 1rem;
+    background: rgba(255,255,255,0.5);
+    color: #FF597B;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+.interest-card h3:hover {
+    transform: scale(1.05);
+    letter-spacing: 1px;
+}
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0 0 23px;
+}
+.video-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+    animation: breathe 4s ease-in-out infinite;
+    transition: all 0.5s ease;
+}
+.video-container:hover img {
+    transform: scale(1.1) rotate(2deg);
+    filter: brightness(1.1);
+}
+.video-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255,255,250,0.2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.video-container:hover::after {
+    opacity: 1;
+}
+
+.life-photos {
+    margin-bottom: 4rem;
+}
+.photo-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    height: 380px;
+    padding: 0;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.mosaic-item {
+    overflow: hidden;
+    border-radius: 18px;
+    box-shadow: none;
+    transition: all 0.5s ease;
+    border: none !important;
+}
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+.mosaic-item:hover {
+    transform: scale(1.03);
+}
+.mosaic-item:hover img {
+    transform: scale(1.08);
+    filter: saturate(1.2);
+}
+.item1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+.item2 { grid-column: 3 / 4; grid-row: 1 / 2; }
+.item3 { grid-column: 4 / 5; grid-row: 1 / 3; }
+.item4 { grid-column: 1 / 2; grid-row: 2 / 3; }
+.item5 { grid-column: 2 / 4; grid-row: 2 / 3; }
+
+.extra-column {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 0;
+    align-items: stretch;
+}
+.fun-facts {
+    flex: 1;
+    background: linear-gradient(135deg, #FFF5F7 0%, #FFEEF4 100%);
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease 0.6s both;
+    border: none;
+}
+.fact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.fact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.6);
+    border-radius: 15px;
+    transition: all 0.4s ease;
+    border-left: 4px solid #FF85A2;
+}
+.fact-item:hover {
+    transform: translateX(8px) scale(1.02);
+    background: white;
+    box-shadow: 0 5px 15px rgba(255,133,162,0.1);
+    animation: shake 0.5s ease;
+}
+.fact-item div:first-child {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+.fact-item:hover div:first-child {
+    transform: scale(1.3) rotate(15deg);
+}
+
+.make-friends {
+    flex: 1;
+    background: linear-gradient(135deg, #F0F7FF 0%, #E6EEFF 100%);
+    border-radius: 30px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInUp 1s ease 0.7s both;
+    border: none;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #333;
+    font-size: 0.95rem;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #E0E0E0;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.8);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #FF85A2;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255,133,162,0.1);
+}
+.form-check {
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    width: 100%;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #FF85A2 0%, #FF597B 100%);
+    color: white;
+}
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 15px rgba(255,133,162,0.2);
+    animation: pulse 1.5s infinite;
+}
+
+footer {
+    background: linear-gradient(135deg, #333 0%, #555 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 1rem;
+    border-top: 5px solid #FF85A2;
+    border-radius: 50px 50px 0 0;
+    margin-top: 3rem;
+}
+footer p {
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+footer p:hover {
+    transform: scale(1.05);
+    color: #FFC0CB;
+}
+
+.photo-title {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: floatTitle 3s ease-in-out infinite;
+    background: linear-gradient(90deg, #4fb7ff, #ff7bc7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+@keyframes floatTitle {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .about-me { flex-direction: column; }
+    .header-nav { position: static; margin-bottom: 2rem; }
+    .info-with-photos { flex-direction: column; }
+    .basic-info, .photo-show-box { flex: 1; }
+    .interest-cards { grid-template-columns: 1fr; }
+    .photo-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); height: auto; }
+    .item1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+    .item2 { grid-column: 1 / 2; grid-row: 2 / 3; }
+    .item3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .item4 { grid-column: 1 / 2; grid-row: 3 / 4; }
+    .item5 { grid-column: 2 / 3; grid-row: 3 / 4; }
+    .extra-column { flex-direction: column; }
+    .floating-star { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="header-float float-1">✨</div>
+<div class="header-float float-2">✨</div>
+<div class="header-float float-3">✨</div>
+<div class="header-float float-4">✨</div>
+
+<div class="floating-star star1">✨</div>
+<div class="floating-star star2">✨</div>
+<div class="floating-star star3">✨</div>
+<div class="floating-star star4">✨</div>
+<div class="floating-star star5">✨</div>
+
+<header>
+    <div class="header-nav">
+        <a href="#me">ME</a>
+        <a href="#information">INFO</a>
+        <a href="#interests">INTERESTS</a>
+        <a href="#moments">MOMENTS</a>
+        <a href="#friends">FRIENDS</a>
+    </div>
+    <div class="header-title">
+        <h1>I'm the protagonist.</h1>
+        <p>Welcome to my happy little planet! 🎀 Let's have fun together!</p>
+    </div>
+</header>
+
+<div class="container">
+    <section id="me" class="about-me">
+        <div class="blog-header">
+            <div class="blog-banner">
+                <div class="avatar-wrapper">
+                    <img src="16.jpg" alt="Avatar" class="blog-avatar">
+                </div>
+                <h2 class="blog-name">Yekiddd</h2>
+                <p class="blog-subtitle">(Gentle · Sincere · Happy)</p>
+            </div>
+        </div>
+        <div class="profile">
+            <h2 class="section-title">About Me 🎀</h2>
+            <p>✨ I'm Yekiddd, 21 years old, a Pisces. Gentle and sensitive, slow to warm up but sincere. I recharge in quiet moments but come alive for people I care about.</p>
+            <p>🤍 I’m attentive to others' feelings and try to be reliable. I don't like showing off—I just want to be a calm, easygoing friend people can count on.</p>
+            <p>🎬 I love watching dramas, listening to music, and discovering new food. Simple joy and small adventure always lift my mood.</p>
+            <p>🌿 I don’t force a “cool” vibe. I prefer taking life seriously, staying genuine and kind, and being happy in my own rhythm.</p>
+        </div>
+    </section>
+
+    <section id="information" class="info-with-photos">
+        <div class="basic-info">
+            <h2 class="section-title">Basic Information 📝</h2>
+            <div class="info-grid">
+                <div class="label">Name</div>
+                <div>Yekiddd</div>
+                <div class="label">Age</div>
+                <div>21</div>
+                <div class="label">Birthday</div>
+                <div>March 15, 2004</div>
+                <div class="label">Zodiac / MBTI</div>
+                <div>Pisces, ISFJ (The Defender)</div>
+                <div class="label">Skills</div>
+                <div>Considerate listener, emotional support, food explorer, drama & music lover, detail-oriented</div>
+                <div class="label">Personality</div>
+                <div>Gentle, sensitive, empathetic, reliable, sincere, slow to warm up</div>
+                <div class="label">Major</div>
+                <div>MA in Communication</div>
+                <div class="label">Favorite Color</div>
+                <div>Pink, Blue, White, all beautiful gradient color</div>
+                <div class="label">Favorite Food</div>
+                <div>Strawberry cake, mango dessert, milk tea, chocolate, cookie, fried chicken, hot pot, sushi, ramen, waffle, pudding, tart...</div>
+                <div class="label">Life Motto</div>
+                <div>Be gentle to the world and kind to yourself</div>
+            </div>
+        </div>
+        
+        <div class="photo-show-box">
+            <div class="photo-title" onclick="togglePhotoTitle()">Tap me! Guess who~ 💫</div>
+            <div class="photo-show-item">
+                <img src="20.jpg">
+            </div>
+            <div class="photo-show-item">
+                <img src="21.jpg">
+            </div>
+            <div class="photo-show-item">
+                <img src="22.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="interests">
+        <h2 class="section-title">My Hobbies 🎨</h2>
+        <div class="interest-cards">
+            <div class="interest-card">
+                <h3>📷 Photography Enthusiast</h3>
+                <div class="content">
+                    <div class="video-container">
+                        <img src="5.jpg" alt="Photography">
+                    </div>
+                </div>
+            </div>
+            <div class="interest-card">
+                <h3>🖼️ Art Exhibition Lover</h3>
+                <div class="content">
+                    <div class="video-container">
+                        <img src="8.jpg" alt="Art Exhibition">
+                    </div>
+                </div>
+            </div>
+            <div class="interest-card">
+                <h3>🍜 Food Explorer</h3>
+                <div class="content">
+                    <div class="video-container">
+                        <img src="2.jpg" alt="Food">
+                    </div>
+                </div>
+            </div>
+            <div class="interest-card">
+                <h3>✈️ Travel Lover</h3>
+                <div class="content">
+                    <div class="video-container">
+                        <img src="9.jpg" alt="Travel">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="moments" class="life-photos">
+        <h2 class="section-title">My Amazing Moments 📸</h2>
+        <div class="photo-mosaic">
+            <div class="mosaic-item item1">
+                <img src="10.jpg">
+            </div>
+            <div class="mosaic-item item2">
+                <img src="6.jpg">
+            </div>
+            <div class="mosaic-item item3">
+                <img src="4.jpg">
+            </div>
+            <div class="mosaic-item item4">
+                <img src="3.jpg">
+            </div>
+            <div class="mosaic-item item5">
+                <img src="18.jpg">
+            </div>
+        </div>
+    </section>
+
+    <section id="friends" class="extra-column">
+        <div class="fun-facts">
+            <h2 class="section-title">Fun Facts About Me 🤪</h2>
+            <div class="fact-list">
+                <div class="fact-item">
+                    <div>🎧</div>
+                    <div>Can listen to the same song on loop for a whole week</div>
+                </div>
+                <div class="fact-item">
+                    <div>🍟</div>
+                    <div>Will eat snack in weird order just for fun</div>
+                </div>
+                <div class="fact-item">
+                    <div>🛏️</div>
+                    <div>Can stay up super late but hate getting up early</div>
+                </div>
+                <div class="fact-item">
+                    <div>🎬</div>
+                    <div>Only watch show with subtitle even in my native language</div>
+                </div>
+                <div class="fact-item">
+                    <div>🧩</div>
+                    <div>Collect random cute thing that I don’t really need</div>
+                </div>
+                <div class="fact-item">
+                    <div>💬</div>
+                    <div>Quiet in person but chatty online</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="make-friends">
+            <h2 class="section-title">Let's Be Friends 🤝</h2>
+            <div class="form-group">
+                <label>📝 Your Name</label>
+                <input type="text" placeholder="Your nickname" required>
+            </div>
+            <div class="form-group">
+                <label>👤 Gender</label>
+                <div class="form-check">
+                    <input type="radio" name="gender" value="female" checked>
+                    <label>Female</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="gender" value="male">
+                    <label>Male</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="gender" value="secret">
+                    <label>Secret 🔒</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>🔮 If you could have any superpower, what would it be?</label>
+                <input type="text" placeholder="Tell me your dream superpower~">
+            </div>
+            <div class="form-group">
+                <label>💌 Leave me a message ~</label>
+                <textarea placeholder="Write anything you want to say to me~" rows="4" required></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="becomeBestie()">Become Bestie ✨</button>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Thanks for visiting my happy planet! 💖</p>
+    <p>© This is channel Yekiddd</p>
+    <p>Wishing you all warm & nice day 🎉</p>
+</footer>
+
+<script>
+function becomeBestie() {
+    alert("Yayyy! 🎉\nThank you so much for leaving me a message!\nI've already received your sweet word and I really appreciate you.\nWe are officially best friend now~ 💖\nLet's stay happy and cute together forever! ✨");
+}
+
+function togglePhotoTitle() {
+    const el = document.querySelector('.photo-title');
+    if (el.innerText.includes('Guess who')) {
+        el.innerText = 'It\'s baby me! 💖';
+    } else {
+        el.innerText = 'Tap me! Guess who~ 💫';
+    }
+}
+</script>
+</body>
+</html>
